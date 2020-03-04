@@ -1,14 +1,8 @@
 # Email registration
 
-1. Configure the `.env` file.
+1. Create your data base
 
-2. Create your data base
-
-3. Run in the Terminal
-
-``
-php artisan migrate:refresh --seed
-``
+2. Configure the `.env` file.
 
 Example:
 ````
@@ -19,3 +13,9 @@ DB_DATABASE=emailService
 DB_USERNAME=root
 DB_PASSWORD=12345678
 ````
+
+3. Run in the Terminal
+
+``
+php artisan migrate:refresh --seed
+``
