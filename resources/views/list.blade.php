@@ -1,20 +1,16 @@
-<html>
+<html lang="en">
 <head>
+    <title>Registered emails</title>
+
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
-
-    <style>
-        .center-div {
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>
 </head>
 
 <body>
 <div class="row">
     <div class="col-md-2">
+{{--        Go back button--}}
         <a href="{!! route('home') !!}">
             <button type="button" class="btn btn-danger">
                 Go back
@@ -23,6 +19,7 @@
     </div>
     <div class="col-md-8">
         <div class="row">
+{{--            Select country form--}}
             <form id="form" name="form" method="POST" action="{!! route('list') !!}">
                 @csrf
                 <div class="form-group center-div">
@@ -41,6 +38,8 @@
                 </div>
             </form>
         </div>
+
+{{--        Table with the email addresses--}}
         <table id="table" class="table display nowrap" style="width:100%">
             <thead>
             <tr>
@@ -58,14 +57,6 @@
                 </tr>
             @endforeach
             </tbody>
-
-            <tfoot>
-            <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-            </tfoot>
         </table>
     </div>
     <div class="col-md-2"></div>
@@ -81,6 +72,7 @@
 <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
 
 <script type="text/javascript">
+    // Table format and export options
     $(document).ready(function() {
         $('#table').DataTable( {
             dom: 'Bflrtip',
@@ -102,6 +94,7 @@
         });
     });
 
+    // Apply the country filter
     $('#country').change(function() {
         $("#form").submit();
     });
